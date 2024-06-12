@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Globall contents</title>
+  <link rel="stylesheet" type="text/css" href="./workdashboard.css">
+  <script defer src="./workdashboard.js"></script>
+  <script defer src="./registration.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.5.0/html-docx.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <link rel="icon" type="image/png" href="currency.png"> 
+  </head>
+<body>
+  <div class="topnav">
+    <a style="color: #2196F3; cursor: pointer;" onclick="toggleProfile()">Profile</a>
+    <a href="workdashboard.html">New jobs</a>
+      <a href="submit-job.html">Submit job</a>
+      <a href="package-upgrade.html">Premium</a>            
+      </div><br><br>
+      <div class="profile-icon" onclick="toggleProfile()">
+        <img src="more.png" alt="Profile" width="30" height="30" style="padding-bottom: 20px;">
+      
+            </div>
+               
+      <div class="profile-section" id="profileSection">
+        <div class="usericon" id="usericon">
+          <img src="user2.png" alt="Profile" width="40" height="40"><br>
+        My Account
+      </div>
+      <div class="userdetails" id="userdetails">
+      <b id="username-display"></b><br>
+        <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        <b style="color: rg-b(0, 0, 255);" id="account_phonenumber"></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        <b id="account_email"></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        Membership: <b id="account_membership"></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        Cert No: <b id="account_certnumber"></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        Package: <b id="account_package"></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        Payment Method: <b id="account_paymentmethod"></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        Balance: <b id="account_ballance"></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        You can do <b id="account_jobs"></b> more jobs today<br>
+        <div class="separatelines" id="separatelines">
+          ------------------------------------------------</div>
+        
+    
+          <section id="paymentmethod">
+           <a href="paymentmethod.html">Add Payment Method</a>
+              </section><br>
+            <section id="logoutsecction">
+          <b>Log out</b>
+            </section>
+      </div>
+    </div>
+
+<div class="overlay" onclick="hideProfile()"></div>
+
+<div class="body">
+  <h3>Funds withdrawal</h3>
+  <h5>You can only withdraw via your added payment method</h5>
+  <img src="mpesa.jpg" width="17%" style="cursor: pointer;" onclick="mpesapaymentsMethods()"><img src="paypal3.png" width="15%" style="float: right; cursor: pointer;" onclick="paypalpaymentsMethods()"><br>
+   <br>
+   
+   <div class="row">
+    <div class="col-75">
+      <div class="container" id="mpesapaymentsecction" style="background-color: green; color: white;">
+        <form action="/mpesapaymentmethod" method="post" id="mpesapaymentmethod_form">
+          <div class="row">
+            <div class="col-50">
+              <h3 style="text-align: center;">M-PESA WITHDRAWAL</h3>
+              <h3>Withdraw Money to your M-Pesa Account</h3>
+              <div class="row">
+            
+                <div class="col-50">
+                  <label for="adr"></i> Enter Amount to Withdraw</label>
+                  <input type="number" id="withdraw-amount" name="withdraw-amount" placeholder="Minimum KES. 500">
+                  <div id="paymentmethod-phone-error" class="error"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input type="submit"  value="Update" class="btn" id="mpesawithdrawal" style="background-color: tomato;" onclick="mpesePayment()"><br>
+        </form>
+      </div>
+    </div>
+  </div>
+   <br>
+   <div class="row">
+    <div class="col-75">
+      <div class="container" id="paypalpaymentsecction" style="background-color: darkblue; color: white;">
+          <form action="/paypalpaymentmethod" method="post" id="paypalpaymentmethod_form">
+     <div class="row">
+            <div class="col-50">
+              <h3 style="text-align: center;">PayPal</h3>
+              <h3>Withdraw funds to your PayPal account</h3>
+              <div class="row">
+                  <div class="col-50">
+              <div id="error-messages" style="color: red;"></div>
+              <div style="font-size: 100%;" id="paypalpaymentmethod-emptyfield-error" class="error"></div>
+               <div class="col-50">
+              <label for="email"></i> Enter Amount to Withdraw</label>
+              <input type="text" id="email" name="email" placeholder="Minimum KES. 500">
+              <div id="paypal-email-error" class="error"></div>
+              </div>
+          </div>
+          
+      </div>
+  
+            </div>
+       
+          </div>
+         <input type="submit" value="Update" class="btn" id="paypalpaymentupdate" style="background-color: tomato;" onclick="paypalPayment()"><br>
+           
+        </form>
+      </div>
+      
+    </div>
+    
+  </div>
+  </div>
+    
+  <footer>
+    <p>&copy; 2024 Globall contents. All rights reserved.</p>
+</footer>
+<script>
+  document.getElementById('downloadPDFButton').addEventListener('click', function() {
+  var element = document.getElementById('resultsTable');
+  html2pdf().from(element).set({
+    margin: 10,
+    filename: 'Membership Certificate.PDF',
+    image: { type: 'png', quality: 1 },
+    html2canvas: { dpi: 192, letterRendering: true }
+  }).save();
+  });
+  </script>
+</body>
+</html>

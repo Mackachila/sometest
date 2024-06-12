@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download Results</title>
+<!-- Include required libraries -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.5.0/html-docx.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+<style>
+  /* Prevent table rows from being split across pages */
+  tr {
+    page-break-inside: avoid;
+  }
+  th{
+    color: blue;
+    font-size: 130%
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+  table, th, td {
+    border: 1px solid white; 
+    line-height: 2;
+    font-family: Arial, sans-serif;
+    /* optional: setting border for cells */
+  }
+</style>
+</head>
+<body>
+
+<table id="resultsTable"  width="100%">
+  <thead>
+    <tr>
+      <th>GLOBALL CONTENTS</th>
+    </tr>
+  </thead>
+  <thead>
+    <tr>
+      <th>Membership Certificate</th>
+    </tr>
+  </thead>
+    <tr>
+      <td>This is to certify that user <b>Mackachila</b> has successfully met all the qualifications of Globall contents <b>membership</b> and have been awarded this certificate on this day of <b>16/03/2024</b>.
+This certificate allows and qualifies the owner to be a member of Globall Contents at all times. A client might at times need to verify the validity of a freelancer. In such a case, a client might request you for your certificate number which you must provide to verify yourself. Your certificate number is totally useless to anyone else other than just verifying you as a valid member of Globall Contents and you don’t have to worry sharing it.<br><br>Your certificate number is: <b style="color: blue"> GH435SDAW2879</b>. You must keep this number safe as you will need it during your withdrawal.<br><br>Globall contents retains all the rights to withdraw the validity of this certificate at anytime should the owner violate any of our terms of use.<br><br><br>We value you so much Mackachila. All the best in your financial journey at Globall Contents.<br><br><br><br>This is a system generated certificate and can only be verified by our system.
+</td>
+       </tr>
+   
+  </tbody>
+</table>
+
+<button id="downloadWordButton">Download as Word Document</button>
+<button id="downloadPDFButton">Download as PDF</button>
+
+<script>
+document.getElementById('downloadWordButton').addEventListener('click', function() {
+  var table = document.getElementById('resultsTable');
+  var docx = htmlDocx.asBlob(table.outerHTML);
+  saveAs(docx, 'results.docx');
+});
+
+document.getElementById('downloadPDFButton').addEventListener('click', function() {
+  var element = document.getElementById('resultsTable');
+  html2pdf().from(element).set({
+    margin: 10,
+    filename: 'results.pdf',
+    html2canvas: { dpi: 192, letterRendering: true }
+  }).save();
+});
+</script>
+
+</body>
+</html>

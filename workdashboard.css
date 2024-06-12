@@ -1,0 +1,892 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin-top: 0;
+  line-height: 1.6;
+  padding-top: 0;
+  background-color: #f0f0f0;
+  overflow-x: hidden;
+}
+h3{
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+  font-size: 130%;
+  color: #2196F3;
+}
+h2{
+  text-align: center;
+  font-size: 90%;
+   color: green;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #2196F3;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 9px;
+  text-decoration: none;
+  font-size: 17px;
+  color: white;
+}
+
+.topnav a:hover {
+  background-color: lightgreen;
+  color: blue;
+}
+
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+.topnav2 {
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.topnav2 a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 1px 4px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav2 a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.profile-section {
+  border-right: 1px solid lightblue;
+  position: fixed;
+  height: 95%;
+  overflow-y: auto;
+  top: 0;
+  font-size: 90%;
+  left: -100%; /* Initially hidden on small screens */
+  bottom: 0;
+  background-color: whitesmoke;
+  z-index: 100;
+  transition: left 0.2s ease;
+}
+.profile-section.active {
+  left: 0;
+}
+.profile-icon {
+  display: none;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  position: fixed;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.usericon{
+  background-color: darkslategrey;
+  text-align: center;
+  color: white;
+  padding-top: 5px;
+}
+
+.userdetails{
+  padding: 15px;
+  background-color: lightpink;
+  
+  
+}
+
+.separatelines{
+  color: white; 
+  font-size: 80%;
+}
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+.notification-container {
+  margin-right: 2px;
+  padding: 7px;
+  
+}
+.search-container {
+  position: fixed;
+  width: 250px; /* Adjust width as needed */
+  margin-right: 2px;
+  padding: 5px;
+  right: 10px;
+  
+
+}
+.search-container2 {
+  display: none;
+  position: relative;
+  width: 200px; /* Adjust width as needed */
+  margin-right: 5px;
+  float: right;
+  
+
+}
+
+/* Style for search input */
+.search-input {
+  width: 100%;
+  padding: 10px 1px 10px 10px; /* Add padding for icon */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+.card {
+  border: 2px solid green;
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+ 
+  margin-bottom: 10px;
+}
+
+/* Style for search icon */
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+.cardd-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* Cardd styles */
+.cardd {
+  width: 100%;
+  border: 1.5px solid green;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.cardd2 {
+  width: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 2px;
+  text-align: center;
+}
+
+#hidepackagepuchasebutton{
+  background-color: tomato;
+  color: white;
+  border-color: white;
+  border-style: solid;
+  padding: 7px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+#sliverpackagepuchasebutton, #goldpackagepuchasebutton, 
+#aluminiumpackagepuchasebutton, #bronzepackagepuchasebutton,
+ #diamondpackagepuchasebutton, #supergoldpackagepuchasebutton, 
+ #superaluminiumpackagepuchasebutton, #superbronzepackagepuchasebutton,
+  #superdiamondpackagepuchasebutton, #freedompackagepuchasebutton{
+  background-color: green;
+  color: white;
+  padding: 7px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+#silverdepositsteps, #golddepositsteps, #aluminiumdepositsteps,
+#diamonddepositsteps, #bronzedepositsteps, #supergolddepositsteps,
+#superaluminiumdepositsteps, #superbronzedepositsteps, #superdiamonddepositsteps, #freedomdepositsteps{
+  
+  display: none;
+}
+
+
+/* Cardd header styles */
+.cardd-header {
+  background-color: green;
+  color: #fff;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Cardd body styles */
+.cardd-body {
+  padding: 15px;
+  font-size: 16px;
+}
+
+/* Cardd footer styles */
+.cardd-footer {
+  background-color: #f0f0f0;
+  padding: 10px;
+ 
+}
+
+.copy-button{
+  padding: 7px;
+  background-color: green;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  
+  cursor: pointer;
+  float: right;
+}
+
+#jobbidingconfirmation{
+  padding: 7px;
+  background-color: green;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  font-size: 130%;
+  cursor: pointer;
+  float: left;
+}
+
+#jobbidingcanceletion{
+  padding: 7px;
+  background-color: tomato;
+  color: white;
+  font-size: 130%;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  float: right;
+}
+
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1000px;
+  
+}
+
+
+.jobs {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%; /* Make this card twice as wide */
+}
+
+.bio {
+  margin-right: 2p;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 19%;/* Make this card twice as wide */
+}
+
+.card-header {
+  padding: 20px;
+  background-color: lightgrey;
+  color: green;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.card-bottom {
+  padding: 20px;
+  background-color: whitesmoke;
+  color: #fff;
+  
+  
+}
+
+.card-body {
+  padding: 15px;
+  
+}
+#bid-button{
+  background-color: lightgrey;
+  border-style: solid;
+  border: none;
+  padding: 7px;
+  border-radius: 7px;
+}
+#depositcad{
+  display: none;
+  z-index: 100;
+  justify-content: center;
+  border-style: solid;
+  border-color: lightgreen;
+  border-width: 1pt;
+  color: green;
+  padding: 4px;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 130%; 
+  text-align: center;
+}
+#certificategeneration{
+  background-color: transparent;
+  border-color: white;
+  border-width: 1pt;
+  font-size: 120%;
+  padding: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#depositform, #nopayment, #codeUsed{
+  display: none;
+}
+#transactionId, .silvertransactionId{
+  padding: 7px;
+  width: 90%;
+  border: none;
+  border-radius: 5px;
+  background-color: whitesmoke;
+}
+#suportcontact, .packageverification{
+  background-color: rgb(9, 241, 9);
+  border-radius: 10px;
+  border-color: white;
+  border-width: 3pt;
+  padding: 7px;
+  cursor: pointer;
+  font-size: 110%;
+
+}
+#depositverification{
+  background-color: orangered;
+  border-radius: 5px;
+  padding: 7px;
+  cursor: pointer;
+  font-size: 110%;
+  float: left;
+  color: white;
+}
+tr {
+  page-break-inside: avoid;
+  
+}
+th{
+  color: blue;
+  font-size: 130%
+}
+
+ table {
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid white; 
+  line-height: 2;
+  font-family: Arial, sans-serif;
+  
+}
+#resultsTable{
+  display: none;
+  background-color: white;
+  border-color: blue;
+  border-style: solid;
+  border-width: 4pt;
+}
+
+#jobhistory-table{
+  width: 100%;
+}
+#jobhistory-table th{
+  color: black;
+  font-size: 100%;
+  
+}
+
+#withdrawals-table{
+  width: 100%;
+}
+#withdrawals-table, th, td{
+  background-color: rgb(250, 226, 252);
+}
+#withdrawals-table th{
+  color: green;
+  font-size: 100%
+}
+#today-table th{
+  color: blue;
+  font-size: 100%
+}
+
+#downloadPDFButton{
+  padding: 5px;
+  display: block; 
+  margin: 0 auto;
+  cursor: pointer;
+}
+#jobsubmittinganswer {
+  width: 95%;
+  height: 30vh; 
+  padding: 7px;
+  font-size: 120%;
+  font-family: Calibri;
+  outline: none;
+   
+}
+#jobId{
+  width: 95%;
+  font-family: calibri;
+  padding: 7px;
+  font-size: 110%;
+}
+#paid-button, #rejected-button, #failed-button{
+border-radius: 10px;
+cursor: pointer;
+padding: 5px;
+font-size: 120%;
+
+}
+
+#paid-button{
+  background-color: green;
+  color: white;
+  border-color: green;
+}
+#failed-button{
+  background-color: red;
+  border-color: red;
+  color: white;
+}
+
+#rejected-button{
+  background-color: tomato;
+  border-color: tomato;
+  
+}
+
+#logout-button3{
+  background-color: red;
+  border-color: red;
+  color: white;
+  padding: 6px;
+  font-size: 130%;
+  border-radius: 7px;
+  float: right;
+}
+#downloadPDFButton2{
+  padding: 5px;
+  display: none; 
+  margin: 0 auto;
+  cursor: pointer;
+}
+#successtick{
+  width: 6%;
+  display: block; 
+  margin: 0 auto;
+}
+
+#jobpostingbutton{
+  padding: 7px;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  background-color: burlywood;
+  font-size: 130%;
+  border-color: burlywood;
+  border-radius: 6px;
+}
+#logoutsecction{
+  background-color: red;
+  text-align: center;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+#paymentmethod{
+  background-color: green;
+  text-align: center;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+#paymentmethod a{
+  text-decoration: none;
+  color: white;
+}
+#mpesapaymentsecction{
+  display: none;
+}
+#paypalpaymentsecction{
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .profile-icon {
+    display: block;
+  }
+  .jobs{
+    width: 100%;
+  }
+.bio{
+  display: none;
+}
+  .search-container2 {
+    display: block;
+       
+  }
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .notification-container {
+    display: block;
+  }
+
+  
+  .headings{
+    display: block;
+  }
+  .dropdown {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  .dropdown-content {
+    right: auto;
+    left: 0;
+  }
+  .profile-section {
+    width: 55%;
+    left: -100%; /* Initially hidden on small screens */
+  }
+  .profile-section.active {
+    left: 0;
+  }
+  .profile-section.active + .overlay {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .profile-section {
+    width: 270px;
+    left: 0;
+     /* Automatically shown on large screens */
+  }
+  .headings{
+    display: none;
+  }
+  .topnav {
+  display: block;
+  margin-left: 240px;
+ }
+  .profile-section.active + .overlay {
+    display: none;
+  }
+   .body {
+    max-width: calc(100% - 220px); /* Adjusted to fit within the viewport */
+    margin-left: 270px;
+   
+  }
+  .container {
+    overflow-x: hidden;
+  }
+}
+
+.cardd {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: auto;
+  border-radius: 3px;
+  background-color: white;
+  padding: 20px;
+  display: inline-block;
+  margin-inline-start: 10px;
+  margin-inline-end: 10px;
+}
+
+
+.cardd:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+.membershipcontainer {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: auto;
+  text-align: center;
+  border-radius: 5px;
+  border-color: yellow;
+  border-style: solid;
+  border-width: 1pt;
+  padding: 3px;
+ 
+  display: inline-block;
+}
+.deposittitle{
+  color: green;
+  background-color: transparent;
+  text-align: center;
+  font-size: 200%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 3px;
+}
+.depositsubtitle{
+  background-color: white;
+  text-align: center;
+  font-size: 150%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  
+}
+#withdraw-amount{
+  width: 100%;
+  height: 50%;
+  outline: none;
+  border-radius: 7px;
+}
+
+#biddingballanceerror, #packageexpirederror, #anypackageexpirederror, #basichigherpriceerror, #anypackagehigherpriceerror{
+  display: none;
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  font-size: 100%;
+  transform: translate(-50%, -50%);
+  padding: 9px;
+  background-color: white;
+  color: red;
+  width: 90%;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+#jobnotexistingerror {
+  display: none;
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  font-size: 100%;
+  transform: translate(-50%, -50%);
+  padding: 9px;
+  background-color: rgb(245, 222, 222);
+  color: red;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 4;
+}
+
+#jobsuccessfullysecured {
+  display: none;
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  font-size: 100%;
+  transform: translate(-50%, -50%);
+  padding: 9px;
+  background-color: green;
+  color: white;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 4;
+}
+
+#jobsuccessfullysubmitted {
+  display: none;
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  font-size: 80%;
+  width: auto;
+  transform: translate(-50%, -50%);
+  padding: 9px;
+  background-color: rgb(5, 146, 5);
+  color: white;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 4;
+}
+
+#nopendingjoberror {
+  display: none;
+  position: fixed;
+  width: auto;
+  top: 15%;
+  left: 50%;
+  font-size: 80%;
+  transform: translate(-50%, -50%);
+  padding: 9px;
+  background-color: rgb(245, 222, 222);
+  color: red;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 4;
+}
+
+#account_membership, #account_certnumber, #account_package, #account_paymentmethod, #account_ballance{
+  background-color: transparent;
+  padding: 3px;
+  border-radius: 4px;
+}
+
+#account_jobs{
+  background-color: transparent;
+  padding: 3px;
+  color: #2196F3;
+  font-size: 130%;
+  border-color: white;
+  border-style: solid;
+  border-width: 1pt;
+  border-radius: 4px;
+}
+
+.backtotop{
+  background-color: tomato;
+  text-align: center;
+  float: right;
+  border-radius: 5px;
+
+}
+.backtotop a{
+  text-decoration: none;
+  color: white;
+  padding: 7px;
+}
+
+.card3 {
+  display: none;
+  position: fixed;
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 4;
+  animation: fadeIn 1s ease-in-out;
+  border-radius: 6px;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.overlay3 {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+#linkfloatingCard {
+  display: none;
+  position: fixed;
+  top: 28%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 9px;
+  background-color: rgb(128, 128, 128);
+  color: white;
+  border-radius: 7px;
+  font-style: italic;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 4;
+}
+#invitelink{
+  background-color: transparent;
+  width: 100%;
+  text-align: center;
+  border: none;
+  font-size: 110%;
+  color: yellow;
+  outline: none;
+  
+}
+#copylinkbutton{
+      
+  background-color: rgb(255, 0, 162);
+  border-radius: 5px;
+  padding: 7px;
+  font-size: 110%;
+  color: #f4f4f4;
+  cursor: pointer;
+  border: none;
+
+}
+#linkfloatingCard {
+  display: none;
+  position: fixed;
+  top: 28%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 9px;
+  background-color: rgb(128, 128, 128);
+  color: white;
+  border-radius: 7px;
+  font-style: italic;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 6;
+}
+.internalformating{
+ background-color: rgba(224, 255, 254);
+ border-radius: 7px;
+ padding: 3px;
+}

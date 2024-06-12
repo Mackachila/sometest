@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration</title>
+<link rel="stylesheet" type="text/css" href="./registration.css">
+<script defer src="./registration.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>  
+<link rel="icon" type="image/png" href="currency.png">
+</head>
+<body>
+    <div class="loader" id="loader"></div>
+
+    <div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/registration" method="post" id="registration_form">
+
+        <div class="row">
+          <div class="col-50">
+            <h3 style="text-align: center;">Global Contents</h3>
+            <h3>Sign Up</h3>
+            <div class="row">
+              <div class="col-50">
+                <div id="error-messages" style="color: red;"></div>
+                <div style="font-size: 100%;" id="registration-emptyfield-error" class="error"></div>
+                <label for="fname"><i class="fa fa-user"></i> User Name</label>
+                <input type="text" id="username" name="username" placeholder="Input username">
+                <div id="registration-username-error" class="error"></div>
+              </div>
+              <div class="col-50">
+                <label for="email"><i class="fa fa-envelope"></i> E-Mail Address</label>
+                <input type="text" id="email" name="email" placeholder="e.g johndeo@example.com">
+                <div id="registration-email-error" class="error"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-50">
+                <label for="adr"><i class="fa fa-phone"></i> Phone number</label>
+                <input type="text" id="phone_number" name="phone_number" placeholder="Phone number">
+                <div id="registration-phone-error" class="error"></div>
+              </div>
+              <div class="col-50">
+                <label for="city"><i class="fa fa-key"></i> Invitation Code</label>
+                <input type="text" id="invitation_code" name="invitation_code" placeholder="Invitation code (Optional)">
+                <div id="registration-invitation-error" class="error"></div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-50">
+                <label for="password" class="password-icon"><i class="fa fa-lock"></i> Password</label>
+                <input type="password" id="password" name="password" placeholder="Set Password">
+                <i class="fa fa-eye password-toggle" onclick="togglePassword('password')"></i>
+                <div id="registration-password-error" class="error"></div>
+              </div>
+              <div class="col-50">
+                <label for="confirm-password" class="password-icon"><i class="fa fa-lock"></i> Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+                <i class="fa fa-eye password-toggle" onclick="togglePassword('confirm_password')"></i>
+                <div id="registration-confirmpassword-error" class="error"></div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <input type="checkbox" name="agreement" id="agreement"> Confirm that you agree to our <a href="terms-conditions.html">Terms and conditions</a>
+
+        <input type="submit" value="Submit" class="btn" id="submitBtn" disabled><br>
+        Have an account? <a href="signin.html">Sign in</a>
+      </form>
+    </div>
+
+  </div>
+
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const checkbox = document.getElementById('agreement');
+        const submitBtn = document.getElementById('submitBtn');
+
+        checkbox.addEventListener('change', function () {
+            if (checkbox.checked) {
+                submitBtn.disabled = false;
+                submitBtn.style.backgroundColor = 'green';
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.style.backgroundColor = 'grey';
+            }
+        });
+    });
+
+    // Display error messages based on the error parameter
+    function errorMessages() {
+      const urlParams1 = new URLSearchParams(window.location.search);
+      const wr = urlParams1.get('wr');
+
+      if (wr === 'qjrfapps_gdfajsd_yrkwaqtefd_hdfreaujerw') {
+        document.getElementById('error-messages').textContent = 'Username is taken.';
+      } else if (wr === 'pdr_hdfwqsfat_jftgsre_urtoyrsg') {
+        document.getElementById('error-messages').textContent = 'Email already registered.';
+      } else if (wr === 'hfryts_knfekg_kqwasy_opvrw') {
+        document.getElementById('error-messages').textContent = 'Phone number already registered.';
+      } else if (wr === 'squyta_kiyvcmcs_ytsdwqzp_lmorodr') {
+        document.getElementById('error-messages').textContent = 'There was an error. Please try again.';
+      }
+      else if (wr === 'pphhds-gdgayrtw-uhfgd') {
+        document.getElementById('error-messages').textContent = 'Invalid invitation code.The last name in the link is the invitation code';
+      }
+    }
+
+    // Restore form data from sessionStorage
+    function restoreFormData() {
+      const formData = JSON.parse(sessionStorage.getItem('registrationFormData')) || {};
+
+      document.getElementById('username').value = formData.username || '';
+      document.getElementById('email').value = formData.email || '';
+      document.getElementById('phone_number').value = formData.phone_number || '';
+      document.getElementById('invitation_code').value = formData.invitation_code || '';
+
+      // Clear stored form data after restoring
+      sessionStorage.removeItem('registrationFormData');
+    }
+
+    // Save form data to sessionStorage
+    function saveFormData() {
+      const formData = {
+        username: document.getElementById('username').value,
+        email: document.getElementById('email').value,
+        phone_number: document.getElementById('phone_number').value,
+        invitation_code: document.getElementById('invitation_code').value,
+        // ... (save other form fields)
+      };
+
+      sessionStorage.setItem('registrationFormData', JSON.stringify(formData));
+    }
+
+    // Run the script when the DOM content is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      errorMessages();
+      restoreFormData(); // Restore form data on page load
+      const urlParams = new URLSearchParams(window.location.search);
+    const inviter = urlParams.get('inviter');
+
+    // Fill the inviter's username in the input field
+    if (inviter) {
+      document.getElementById('invitation_code').value = inviter;
+    }
+      // Add an event listener to the form submission
+      document.getElementById('registration_form').addEventListener('submit', function (event) {
+        // Save form data before submission
+        saveFormData();
+      });
+    });
+
+    // Function to send OTP
+    function sendOtp() {
+      const phoneNumber = document.getElementById('phone_number').value;
+      // Make an AJAX request to your server to trigger OTP sending
+      // You can use fetch or other AJAX libraries
+      fetch('/send-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phoneNumber }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert('OTP sent successfully. Check your phone.');
+        } else {
+          alert('Failed to send OTP. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error sending OTP:', error);
+      });
+    }
+  
+</script>
+</body>
+</html>

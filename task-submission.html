@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Globall contents</title>
+  <link rel="stylesheet" type="text/css" href="./workdashboard.css">
+  <script defer src="./workdashboard.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.5.0/html-docx.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <link rel="icon" type="image/png" href="currency.png"> 
+  </head>
+<body>
+  <div class="profile-icon" onclick="toggleProfile()">
+    <img src="more.png" alt="Profile" width="30" height="30" style="padding-bottom: 20px;"></div><br>
+  
+        </div>
+        <div class="search-container2">
+          <input type="text" class="search-input" placeholder="Search for jobs">
+          <i class="fa fa-search search-icon" onclick="search()" style="cursor: pointer"></i>
+           </div><br>
+        
+  <div class="profile-section" id="profileSection">
+      <img src="user.png" alt="Profile" width="70" height="70" style="float: center;"><br>
+    <p>User: <b style="color: rgb(53, 15, 221);" id="username-display"></b></p>
+    <p>Membersip:<b id="account_membership"></b></p>
+    <p>Certificate No:<b id="account_certnumber"></b></p>
+    <button id="downloadPDFButton2" onclick="printing()">Download Certificate</button>
+<div class="headings">
+    <a href="about.html">Search Tasks</a>
+        <a href="#contact">Pending Tasks</a>
+        <a href="about.html">Completed jobs</a>
+        <a href="#contact">Payments</a>
+      </div>
+        <section id="logoutsecction">
+      <b>Log out</b>
+        </section>
+  </div>
+  </div>
+
+<div class="overlay" onclick="hideProfile()"></div>
+
+<div class="body">
+    <div class="topnav2">
+    <a href="workdashboard.html">Home</a>
+           </div>
+           <h1>Upload your file</h1>
+           <form id="uploadForm" enctype="multipart/form-data">
+             <input type="file" name="file" id="fileInput" accept=".docx,.pdf">
+             <button type="submit">Upload</button>
+           </form>
+           <div id="message"></div>
+<div class="footer">
+  <div class="footer-section">
+    <h3>Contact Us</h3>
+    <p>Email: info@example.com</p>
+    <p>Phone: 123-456-7890</p>
+  </div>
+  <div class="footer-section">
+    <h3>Follow Us</h3>
+    <p>Twitter: @example</p>
+    <p>Facebook: /example</p>
+  </div>
+</div>
+<script>
+  document.getElementById('downloadPDFButton').addEventListener('click', function() {
+  var element = document.getElementById('resultsTable');
+  html2pdf().from(element).set({
+    margin: 10,
+    filename: 'Membership Certificate.PDF',
+    image: { type: 'png', quality: 1 },
+    html2canvas: { dpi: 192, letterRendering: true }
+  }).save();
+  });
+  </script>
+</body>
+</html>

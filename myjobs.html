@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Globall contents</title>
+  <link rel="stylesheet" type="text/css" href="./workdashboard.css">
+  <script defer src="./workdashboard.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.5.0/html-docx.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <link rel="icon" type="image/png" href="currency.png"> 
+  </head>
+<body>
+
+  <div class="topnav">
+    <a style="color: #2196F3; cursor: pointer;" onclick="toggleProfile()">Profile</a>
+    <a href="workdashboard.html">New jobs</a>
+      <a href="submit-job.html">Submit job</a>
+      <a href="package-upgrade.html">Premium</a>            
+      </div><br><br>
+      <div class="profile-icon" onclick="toggleProfile()">
+        <img src="more.png" alt="Profile" width="30" height="30" style="padding-bottom: 20px;">
+      
+            </div>
+               
+      <div class="profile-section" id="profileSection">
+        <div class="usericon" id="usericon">
+          <img src="user2.png" alt="Profile" width="40" height="40"><br>
+        My Account
+      </div>
+      <div class="userdetails" id="userdetails">
+      <b id="username-display"></b><br>
+        <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        <b style="color: rg-b(0, 0, 255);" id="account_phonenumber"></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        <b id="account_email"></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        <b>Membership: <b id="account_membership"></b></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        <b>Cert No: </b><b id="account_certnumber"></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        <b>Package: </b><b id="account_package"></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        <b>Payment Method: </b><b id="account_paymentmethod"></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        <b>Balance:</b> <b id="account_ballance"></b><br>
+       <div class="separatelines" id="separatelines">
+        ------------------------------------------------</div>
+        You can do <b id="account_jobs" style="color: white;"></b> more jobs today<br>
+        <div class="separatelines" id="separatelines">
+          ------------------------------------------------</div>
+    
+          <section id="paymentmethod">
+           <a href="paymentmethod.html"><b>Add Payment Method</b></a>
+              </section><br>
+              <section id="paymentmethod" onclick="confirmingpaymentmethod()">
+                <b>Withdraw Earnings</b>
+                   </section><br>
+            <section id="logoutsecction">
+          <b>Log out</b>
+            </section>
+      </div>
+    </div>
+
+<div class="overlay" onclick="hideProfile()"></div>
+
+<div class="body">
+  <p><b>This is a list of all your jobs</b></p>
+           <p><b>Note.</b> If your job is rejected by the client, it will be made available again to everyone. If another person sucures it, it will dissapear from your job history.</p>
+           
+           <b><div id="nowithdrawals"></div></b><br>
+           
+           <table id="withdrawals-table">
+             <thead>
+               <tr>
+                 <th>Job Title</th>
+                 <th>Job ID</th>
+                 <th>Job Price</th>
+                 <th>Job Status</th>
+               </tr>
+             </thead>
+             <tbody id="withdrawals-body">
+              
+             </tbody>
+              </table>
+            
+         </div>
+   
+</div><br>
+        </div>
+        <footer>
+          <p>&copy; 2024 Globall contents. All rights reserved.</p>
+      </footer>
+
+</body>
+</html>

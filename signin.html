@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signing in</title>
+<link rel="stylesheet" type="text/css" href="./registration.css">
+<script defer src="./registration.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>  
+<link rel="icon" type="image/png" href="currency.png">
+</head>
+<body>
+    <div id="errorlogincard">Incorrect Email or phone number. Please provide correct details</div>
+    <div id="servererror">A problem occured. Please try again</div>
+ 
+    <div class="loader" id="loader"></div>
+
+    <div class="row">
+      <div class="col-75">
+        <div class="container">
+            <form action="/signin" method="post" id="login_form" onsubmit="login(event)">
+                 
+            <div class="row">
+              <div class="col-50">
+                <h3 style="text-align: center;">Sign in to your account</h3>
+                <h3>Sign in</h3>
+                <div class="row">
+                  <div class="col-50">
+                    <div style="font-size: 100%;" id="login-emptyfield-error" class="error"></div>
+                    <div id="error-message" style="color: red;"></div><br>
+                    <label for="login_username"><i class="fa fa-user"></i> User Name or Email Address</label>
+                    <div class="input-icon">
+                      <input type="text" id="login_username" name="username" placeholder="Username or Email">
+                      
+                    </div>
+                    <div id="registration-username-error" class="error"></div>
+                  </div>
+                  <div class="col-50">
+                    <div style="font-size: 100%;" id="login-emptyfieldd-error" class="error"></div>
+                    <div id="error-messages" style="color: red;"></div><br>
+                    <label for="login_password"><i class="fa fa-lock"></i> Password</label>
+                    <div class="input-icon">
+                      <input type="password" id="login_password" name="password" placeholder="Input your password">
+                      <i class="fa fa-eye password-toggle" onclick="togglePassword('login_password')"></i>
+                    </div>
+                    <div id="registration-password-error" class="error"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <input type="submit" value="Log in" class="btn2" id="loginBtn">
+            Don't have an account? <a href="registration.html">Register here</a><br><br>
+            Forgot password? <a href="resetpassword.html">Reset</a>
+          </form>
+        </div>
+      </div>
+    </div>
+<script>    
+  function loginsuccessful() {
+    var loginsuccessful = document.getElementById('loginsuccessful');
+    
+    loginsuccessful.style.display = 'block';
+  
+    // Automatically hide the floating card after 3 seconds
+    setTimeout(function() {
+        loginsuccessful.style.display = 'none';
+    }, 2000);
+  }
+  function displayErrorMessages() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const error = urlParams.get('error');
+  
+      if (error === 'user_not_found') {
+        document.getElementById('error-message').textContent = 'Wrong username or email.';
+      } else if (error === 'incorrect_password') {
+        document.getElementById('error-message').textContent = 'Incorrect password.';
+      } else if (error === 'server_error') {
+        document.getElementById('error-message').textContent = 'We did not find such user in our records.';
+      }else{
+        loginsuccessful();
+      }
+    }
+  
+   
+    // Get the error message on window load
+    window.onload = function () {
+      displayErrorMessages();
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payments</title>
+  <link rel="stylesheet" type="text/css" href="./workdashboard.css">
+
+  <script defer src="./payments.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  </head>
+<body>
+  <b style="font-size: 120%;">You will be automatically loged out in 1 hour. If you are not done, log in again</b><br>
+  <b >Manager:</b> <b  id ="username-display3"></b> <button id="logout-button3">Logout</button>
+<div id="container">
+
+<div id="taskssecction">
+  <section id="section1">
+    <form id="todaypayments">
+      <div id="error-messages"></div>
+      <label for="phonenumber">Please Copy and paste Transaction ID here:</label>
+      <input type="text" id="withdrawalId" name="withdrawalId" required placeholder="Transaction ID"><br><br>
+       <button type="button" id="paid-button">Successful</button>
+      <button type="button" id="rejected-button">Rejected</button>
+      <button type="button" id="failed-button">Failed</button>
+    </form>  
+    <h2 style="color: black;">Today's Pending Payments</h2>
+    <table id="today-tablle" border="1" style="background-color: aquamarine;">
+      <thead>
+        <tr>
+          <th>Transaction ID</th>
+          <th>Amount</th>
+          <th>Contact</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p>This is the last part for today</p><br><br><br>
+  </section><br><br>
+
+</div>
+
+<div id="depositsecction">
+  <section id="otheraccountinfo">
+    
+      </section>
+    
+</div>
+
+<div id="withdrawalsecction">
+  <section id="otheraccountinfo">
+  
+  </section><br><br>
+
+ </div>
+
+</body>
+</html>
